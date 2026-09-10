@@ -1,5 +1,6 @@
+require('ts-node/register/transpile-only');
 const serverless = require('serverless-http');
-const { createApp } = require('../dist/main');
+const { createApp } = require('../src/main');
 
 let cachedApp;
 
