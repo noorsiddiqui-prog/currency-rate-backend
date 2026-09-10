@@ -10,7 +10,7 @@ import { AppModule } from './app.module';
 // when connecting to MongoDB Atlas.
 dns.setServers(['8.8.8.8', '1.1.1.1', '8.8.4.4']);
 
-async function bootstrap() {
+export async function createApp() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
@@ -43,9 +43,19 @@ async function bootstrap() {
     );
   }
 
+  return app;
+}
+
+async function bootstrap() {
+  const app = await createApp();
+  const configService = app.get(ConfigService);
   const port = configService.get<number>('port') ?? 3001;
+
   await app.listen(port);
   // eslint-disable-next-line no-console
   console.log(`Backend running on http://localhost:${port}/api`);
 }
-bootstrap();
+
+if (require.main === module) {
+  bootstrap();
+}
