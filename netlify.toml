@@ -5,6 +5,19 @@
 
 [functions]
   node_bundler = "esbuild"
+  external_node_modules = [
+    "@nestjs/core",
+    "@nestjs/microservices",
+    "@nestjs/websockets",
+    "@nestjs/platform-socket.io",
+    "@grpc/grpc-js",
+    "@grpc/proto-loader",
+    "nats",
+    "ioredis",
+    "amqplib",
+    "kafkajs",
+    "mqtt"
+  ]
 
 [[redirects]]
   from = "/api/*"
